@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kirara Casino - The Ultimate Gaming Experience</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff6b6b;
+            --secondary: #4ecdc4;
+            --tertiary: #45b7d1;
+            --accent: #f9ca24;
+            --gold: #f39c12;
+            --dark-bg: #0a0a0a;
+            --dark-card: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1aa;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --gradient-primary: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 50%, #45b7d1 100%);
+            --gradient-gold: linear-gradient(135deg, #f39c12 0%, #f1c40f 50%, #e67e22 100%);
+            --gradient-neon: linear-gradient(135deg, #ff6b6b 0%, #ff9ff3 25%, #54a0ff 50%, #5f27cd 75%, #ff6b6b 100%);
+            --glow-primary: 0 0 40px rgba(255, 107, 107, 0.6);
+            --glow-gold: 0 0 60px rgba(243, 156, 18, 0.8);
+            --glow-neon: 0 0 80px rgba(255, 107, 107, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Animated Casino Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 20% 30%, rgba(255, 107, 107, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(78, 205, 196, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 40% 80%, rgba(69, 183, 209, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 90% 70%, rgba(243, 156, 18, 0.08) 0%, transparent 50%);
+            background-size: 400% 400%;
+            animation: casinoBackground 25s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes casinoBackground {
+            0%, 100% { 
+                background-position: 0% 50%, 100% 50%, 50% 100%, 50% 0%; 
+                transform: scale(1) rotate(0deg);
+            }
+            25% { 
+                background-position: 100% 50%, 0% 50%, 0% 0%, 100% 100%; 
+                transform: scale(1.05) rotate(1deg);
+            }
+            50% { 
+                background-position: 50% 0%, 50% 100%, 100% 50%, 0% 50%; 
+                transform: scale(1.1) rotate(0deg);
+            }
+            75% { 
+                background-position: 0% 100%, 100% 0%, 50% 50%, 50% 50%; 
+                transform: scale(1.05) rotate(-1deg);
+            }
+        }
+
+        /* Floating Casino Chips */
+        .floating-chips {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .chip {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gradient-gold);
+            box-shadow: var(--glow-gold);
+            animation: floatChip 15s linear infinite;
+            opacity: 0.3;
+        }
+
+        .chip::before {
+            content: '💰';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            animation: chipSpin 3s linear infinite;
+        }
+
+        .chip:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .chip:nth-child(2) { left: 20%; animation-delay: 3s; }
+        .chip:nth-child(3) { left: 30%; animation-delay: 6s; }
+        .chip:nth-child(4) { left: 40%; animation-delay: 9s; }
+        .chip:nth-child(5) { left: 50%; animation-delay: 12s; }
+        .chip:nth-child(6) { left: 60%; animation-delay: 2s; }
+        .chip:nth-child(7) { left: 70%; animation-delay: 5s; }
+        .chip:nth-child(8) { left: 80%; animation-delay: 8s; }
+
+        @keyframes floatChip {
+            0% { 
+                transform: translateY(100vh) rotate(0deg) scale(0.5); 
+                opacity: 0; 
+            }
+            10% { opacity: 0.3; }
+            90% { opacity: 0.3; }
+            100% { 
+                transform: translateY(-100px) rotate(360deg) scale(1.2); 
+                opacity: 0; 
+            }
+        }
+
+        @keyframes chipSpin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Header with Ultra-Modern Glassmorphism */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(30px);
+            border-bottom: 1px solid var(--glass-border);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .header.scrolled {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(40px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+            padding: 0 32px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            background: var(--gradient-neon);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease-in-out infinite;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+            box-shadow: var(--glow-primary);
+            animation: logoPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes logoPulse {
+            0%, 100% { opacity: 1; transform: scaleX(1); }
+            50% { opacity: 0.7; transform: scaleX(1.2); }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 8px 16px;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-nav {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            color: var(--text-primary);
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-nav::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            transition: left 0.6s ease;
+            z-index: -1;
+        }
+
+        .cta-nav:hover::before {
+            left: 0;
+        }
+
+        .cta-nav:hover {
+            transform: translateY(-2px);
+            border-color: transparent;
+            box-shadow: var(--glow-primary);
+        }
+
+        /* Hero Section with Spectacular 3D Casino Effects */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 80px;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(3.5rem, 8vw, 7rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 32px;
+            background: var(--gradient-neon);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: heroGradient 4s ease-in-out infinite;
+            text-shadow: 0 0 80px rgba(255, 107, 107, 0.5);
+        }
+
+        @keyframes heroGradient {
+            0%, 100% { background-position: 0% 50%; }
+            25% { background-position: 100% 0%; }
+            50% { background-position: 100% 100%; }
+            75% { background-position: 0% 100%; }
+        }
+
+        .hero-text .tagline {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 24px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px var(--accent); }
+            to { text-shadow: 0 0 30px var(--accent), 0 0 40px var(--accent); }
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            line-height: 1.7;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Game Stats with Neon Effects */
+        .game-stats {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 48px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+            position: relative;
+        }
+
+        .stat-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+            animation: counterGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes counterGlow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(243, 156, 18, 0.5)); }
+            50% { filter: drop-shadow(0 0 20px rgba(243, 156, 18, 0.8)); }
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        /* CTA Buttons with Advanced Animations */
+        .cta-buttons {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            box-shadow: var(--glow-primary);
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.6s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 25px 80px rgba(255, 107, 107, 0.8);
+        }
+
+        .btn-secondary {
+            background: var(--glass-bg);
+            color: var(--text-primary);
+            padding: 20px 40px;
+            border: 2px solid var(--glass-border);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            background: rgba(255, 107, 107, 0.1);
+            transform: translateY(-3px);
+            box-shadow: var(--glow-primary);
+        }
+
+        /* 3D Casino Visual */
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .casino-scene {
+            width: 500px;
+            height: 500px;
+            position: relative;
+            perspective: 1200px;
+            transform-style: preserve-3d;
+        }
+
+        /* Roulette Wheel 3D */
+        .roulette-wheel {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: conic-gradient(
+                from 0deg,
+                #ff0000 0deg 20deg,
+                #000000 20deg 40deg,
+                #ff0000 40deg 60deg,
+                #000000 60deg 80deg,
+                #ff0000 80deg 100deg,
+                #000000 100deg 120deg,
+                #ff0000 120deg 140deg,
+                #000000 140deg 160deg,
+                #ff0000 160deg 180deg,
+                #000000 180deg 200deg,
+                #ff0000 200deg 220deg,
+                #000000 220deg 240deg,
+                #ff0000 240deg 260deg,
+                #000000 260deg 280deg,
+                #ff0000 280deg 300deg,
+                #000000 300deg 320deg,
+                #ff0000 320deg 340deg,
+                #000000 340deg 360deg
+            );
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotateX(15deg);
+            animation: spinRoulette 4s linear infinite;
+            box-shadow: 
+                0 0 60px rgba(255, 0, 0, 0.5),
+                inset 0 0 40px rgba(0, 0, 0, 0.5);
+            border: 5px solid var(--gold);
+        }
+
+        .roulette-wheel::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            background: var(--gold);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 20px var(--gold);
+        }
+
+        @keyframes spinRoulette {
+            from { transform: translate(-50%, -50%) rotateX(15deg) rotateZ(0deg); }
+            to { transform: translate(-50%, -50%) rotateX(15deg) rotateZ(360deg); }
+        }
+
+        /* Floating Game Cards */
+        .game-cards {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .game-card {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            backdrop-filter: blur(20px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            animation: floatCard 6s ease-in-out infinite;
+            box-shadow: var(--glow-neon);
+        }
+
+        .game-card:nth-child(1) {
+            top: 10%;
+            left: 20%;
+            animation-delay: 0s;
+        }
+
+        .game-card:nth-child(2) {
+            top: 20%;
+            right: 10%;
+            animation-delay: 1s;
+        }
+
+        .game-card:nth-child(3) {
+            bottom: 30%;
+            left: 10%;
+            animation-delay: 2s;
+        }
+
+        .game-card:nth-child(4) {
+            bottom: 10%;
+            right: 20%;
+            animation-delay: 3s;
+        }
+
+        .game-card:nth-child(5) {
+            top: 50%;
+            left: 5%;
+            animation-delay: 4s;
+        }
+
+        .game-card:nth-child(6) {
+            top: 40%;
+            right: 5%;
+            animation-delay: 5s;
+        }
+
+        @keyframes floatCard {
+            0%, 100% { 
+                transform: translateY(0px) rotateY(0deg) rotateX(0deg);
+                box-shadow: var(--glow-neon);
+            }
+            25% { 
+                transform: translateY(-20px) rotateY(90deg) rotateX(10deg);
+                box-shadow: 0 20px 40px rgba(255, 107, 107, 0.4);
+            }
+            50% { 
+                transform: translateY(-10px) rotateY(180deg) rotateX(0deg);
+                box-shadow: var(--glow-gold);
+            }
+            75% { 
+                transform: translateY(-15px) rotateY(270deg) rotateX(-10deg);
+                box-shadow: 0 20px 40px rgba(78, 205, 196, 0.4);
+            }
+        }
+
+        /* Games Section */
+        .games-section {
+            padding: 120px 0;
+            background: rgba(26, 26, 26, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .games-section h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 80px;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .game-card-large {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 40px;
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .game-card-large::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.6s ease;
+        }
+
+        .game-card-large:hover::before {
+            transform: scaleX(1);
+        }
+
+        .game-card-large:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 107, 107, 0.3);
+            box-shadow: var(--glow-primary), 0 30px 80px rgba(0, 0, 0, 0.3);
+        }
+
+        .game-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            display: block;
+            animation: gameIconFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes gameIconFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .game-card-large h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .game-card-large p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        /* Final CTA Section */
+        .final-cta {
+            padding: 120px 0;
+            text-align: center;
+            background: 
+                radial-gradient(ellipse at center, rgba(255, 107, 107, 0.1), transparent),
+                radial-gradient(ellipse at 80% 20%, rgba(243, 156, 18, 0.05), transparent);
+        }
+
+        .final-cta h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 800;
+            margin-bottom: 32px;
+            background: var(--gradient-neon);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: finalCtaGradient 3s ease-in-out infinite;
+        }
+
+        @keyframes finalCtaGradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .final-cta p {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .telegram-cta {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 24px 48px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.4rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            box-shadow: var(--glow-primary);
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .telegram-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.6s;
+        }
+
+        .telegram-cta:hover::before {
+            left: 100%;
+        }
+
+        .telegram-cta:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 30px 100px rgba(255, 107, 107, 0.8);
+        }
+
+        .telegram-icon {
+            font-size: 1.8rem;
+            animation: telegramPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes telegramPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+            
+            .game-stats {
+                justify-content: center;
+                gap: 20px;
+            }
+            
+            .casino-scene {
+                width: 350px;
+                height: 350px;
+            }
+            
+            .roulette-wheel {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .games-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .cta-buttons {
+                justify-content: center;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--dark-bg);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--gradient-primary);
+            border-radius: 6px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--gradient-gold);
+        }
+
+        /* Loading Animation */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 1s ease-out;
+        }
+
+        .loading-screen.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .spinner {
+            width: 80px;
+            height: 80px;
+            border: 4px solid rgba(255, 107, 107, 0.1);
+            border-left: 4px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Floating Casino Chips -->
+    <div class="floating-chips">
+        <div class="chip"></div>
+        <div class="chip"></div>
+        <div class="chip"></div>
+        <div class="chip"></div>
+        <div class="chip"></div>
+        <div class="chip"></div>
+        <div class="chip"></div>
+        <div class="chip"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav">
+            <div class="logo">Kirara Casino</div>
+            <ul class="nav-links">
+                <li><a href="#games">Games</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#contact">Play Now</a></li>
+            </ul>
+            <a href="#final-cta" class="cta-nav">🎮 Play on Telegram</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Kirara<br>Casino</h1>
+                    <p class="tagline">🎰 Premium Gaming Experience</p>
+                    <p class="subtitle">Experience the thrill of premium casino gaming right in your Telegram. Play roulette, slots, dice, and more with real-time rewards and stunning graphics.</p>
+                    
+                    <div class="game-stats">
+                        <div class="stat">
+                            <div class="stat-number">12+</div>
+                            <div class="stat-label">Epic Games</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Gaming</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">⚡</div>
+                            <div class="stat-label">Instant Wins</div>
+                        </div>
+                    </div>
+                    
+                    <div class="cta-buttons">
+                        <a href="#final-cta" class="btn-primary">🚀 Start Playing</a>
+                        <a href="#games" class="btn-secondary">🎯 Explore Games</a>
+                    </div>
+                </div>
+                
+                <div class="hero-visual">
+                    <div class="casino-scene">
+                        <div class="roulette-wheel"></div>
+                        <div class="game-cards">
+                            <div class="game-card">🎰</div>
+                            <div class="game-card">🎲</div>
+                            <div class="game-card">🏀</div>
+                            <div class="game-card">⚽</div>
+                            <div class="game-card">🎯</div>
+                            <div class="game-card">🪙</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Games Section -->
+    <section class="games-section" id="games">
+        <div class="container">
+            <h2>🎮 Epic Casino Games</h2>
+            
+            <div class="games-grid">
+                <div class="game-card-large">
+                    <div class="game-icon">🔴⚫</div>
+                    <h3>Roulette</h3>
+                    <p>Classic European roulette with multiple betting options. Bet on red/black, odd/even, or specific numbers for massive payouts!</p>
+                </div>
+                
+                <div class="game-card-large">
+                    <div class="game-icon">🎰</div>
+                    <h3>Slots</h3>
+                    <p>Spin the reels and hit the jackpot! Multiple paylines and bonus features await in our premium slot machines.</p>
+                </div>
+                
+                <div class="game-card-large">
+                    <div class="game-icon">🎲</div>
+                    <h3>Dice Games</h3>
+                    <p>Roll the dice and test your luck! Simple yet thrilling gameplay with customizable betting amounts.</p>
+                </div>
+                
+                <div class="game-card-large">
+                    <div class="game-icon">🏀</div>
+                    <h3>Basketball</h3>
+                    <p>Shoot for the win! Make your prediction and watch the ball soar through the air in this exciting sports game.</p>
+                </div>
+                
+                <div class="game-card-large">
+                    <div class="game-icon">⚽</div>
+                    <h3>Football</h3>
+                    <p>Score big with football betting! Predict the outcome and celebrate your wins with amazing multipliers.</p>
+                </div>
+                
+                <div class="game-card-large">
+                    <div class="game-icon">🎯</div>
+                    <h3>Darts & More</h3>
+                    <p>Perfect your aim with darts, try bowling strikes, or flip coins. Multiple mini-games with instant rewards!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta" id="final-cta">
+        <div class="container">
+            <h2>Ready to Win Big?</h2>
+            <p>Join thousands of players already winning on Kirara Casino. Start playing now directly in Telegram with no downloads required!</p>
+            
+            <a href="https://t.me/your_casino_bot" class="telegram-cta">
+                <span class="telegram-icon">📱</span>
+                Play Now on Telegram
+            </a>
+        </div>
+    </section>
+
+    <script>
+        // Loading screen
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loadingScreen').classList.add('fade-out');
+            }, 1500);
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Game card hover effects
+        document.querySelectorAll('.game-card-large').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-15px) rotateY(5deg)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) rotateY(0)';
+            });
+        });
+
+        // Animate numbers on scroll
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumber = entry.target.querySelector('.stat-number');
+                    if (statNumber && !statNumber.classList.contains('animated')) {
+                        statNumber.classList.add('animated');
+                        animateNumber(statNumber);
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.stat').forEach(stat => {
+            observer.observe(stat);
+        });
+
+        function animateNumber(element) {
+            const text = element.textContent;
+            if (text.includes('+')) {
+                const number = parseInt(text);
+                let current = 0;
+                const increment = number / 30;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= number) {
+                        element.textContent = text;
+                        clearInterval(timer);
+                    } else {
+                        element.textContent = Math.floor(current) + '+';
+                    }
+                }, 50);
+            }
+        }
+
+        // Parallax effect for floating elements
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.5;
+            
+            document.querySelectorAll('.game-card').forEach((card, index) => {
+                card.style.transform = `translateY(${rate * (index + 1) * 0.1}px)`;
+            });
+        });
+
+        // Add particle effects on click
+        document.addEventListener('click', (e) => {
+            createParticles(e.clientX, e.clientY);
+        });
+
+        function createParticles(x, y) {
+            for (let i = 0; i < 5; i++) {
+                const particle = document.createElement('div');
+                particle.style.position = 'fixed';
+                particle.style.left = x + 'px';
+                particle.style.top = y + 'px';
+                particle.style.width = '6px';
+                particle.style.height = '6px';
+                particle.style.background = '#ff6b6b';
+                particle.style.borderRadius = '50%';
+                particle.style.pointerEvents = 'none';
+                particle.style.zIndex = '9999';
+                
+                document.body.appendChild(particle);
+                
+                const angle = (Math.PI * 2 * i) / 5;
+                const velocity = 100;
+                const vx = Math.cos(angle) * velocity;
+                const vy = Math.sin(angle) * velocity;
+                
+                let px = x;
+                let py = y;
+                
+                const animate = () => {
+                    px += vx * 0.1;
+                    py += vy * 0.1;
+                    
+                    particle.style.left = px + 'px';
+                    particle.style.top = py + 'px';
+                    particle.style.opacity = parseFloat(particle.style.opacity || 1) - 0.02;
+                    
+                    if (parseFloat(particle.style.opacity) > 0) {
+                        requestAnimationFrame(animate);
+                    } else {
+                        document.body.removeChild(particle);
+                    }
+                };
+                
+                requestAnimationFrame(animate);
+            }
+        }
+
+        // Dynamic background color changes
+        setInterval(() => {
+            const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f39c12', '#e74c3c'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            document.documentElement.style.setProperty('--accent', randomColor);
+        }, 5000);
+    </script>
+</body>
+</html>
